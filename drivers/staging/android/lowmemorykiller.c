@@ -36,9 +36,7 @@
 #include <linux/sched.h>
 #include <linux/rcupdate.h>
 #include <linux/notifier.h>
-<<<<<<< HEAD
 #include <linux/compaction.h>
-=======
 #ifdef CONFIG_ZRAM_FOR_ANDROID
 #include <linux/swap.h>
 #include <linux/device.h>
@@ -50,7 +48,6 @@
 #ifdef ENHANCED_LMK_ROUTINE
 #define LOWMEM_DEATHPENDING_DEPTH 3
 #endif
->>>>>>> 74643559831fb603242724b721d7f1277e9e5c7e
 
 static uint32_t lowmem_debug_level = 2;
 static int lowmem_adj[6] = {
@@ -315,13 +312,9 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 #endif
 	lowmem_print(4, "lowmem_shrink %lu, %x, return %d\n",
 		     sc->nr_to_scan, sc->gfp_mask, rem);
-<<<<<<< HEAD
 	read_unlock(&tasklist_lock);
     if (selected)
         compact_nodes(false);
-=======
-	rcu_read_unlock();
->>>>>>> 74643559831fb603242724b721d7f1277e9e5c7e
 	return rem;
 }
 
